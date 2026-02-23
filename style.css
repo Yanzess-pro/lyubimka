@@ -1,0 +1,247 @@
+/* ============================= */
+/* БАЗА + ПЛАВНЫЙ ФОН */
+/* ============================= */
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+    overflow-x: hidden;
+
+    /* Очень мягкий многоступенчатый градиент */
+    background: linear-gradient(
+        180deg,
+        #ffe6f0 0%,
+        #ffd9eb 25%,
+        #fff0f7 50%,
+        #ffffff 75%,
+        #fff5fa 100%
+    );
+
+    min-height: 100vh;
+}
+
+/* ============================= */
+/* ЗАГОЛОВОК */
+/* ============================= */
+
+header {
+    padding: 80px 20px 50px;
+}
+
+h1 {
+    font-size: 38px;
+    color: #ff4d88;
+    margin-bottom: 10px;
+}
+
+header p {
+    color: #cc6699;
+    font-size: 18px;
+}
+
+/* ============================= */
+/* ОБЛАЧКА */
+/* ============================= */
+
+.clouds {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 40px 20px 120px;
+}
+
+.cloud {
+    background: white;
+    padding: 20px 45px;
+    border-radius: 60px;
+    cursor: pointer;
+    box-shadow: 0 15px 30px rgba(255, 182, 193, 0.5);
+    font-weight: bold;
+    color: #ff4d88;
+    transition: all 0.3s ease;
+}
+
+.cloud:hover {
+    transform: scale(1.12) rotate(3deg);
+}
+
+/* Хаотичный наклон */
+.cloud:nth-child(1) { transform: rotate(8deg); }
+.cloud:nth-child(2) { transform: rotate(-6deg); }
+.cloud:nth-child(3) { transform: rotate(14deg); }
+.cloud:nth-child(4) { transform: rotate(-10deg); }
+
+/* ============================= */
+/* МОДАЛЬНОЕ ОКНО */
+/* ============================= */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 192, 203, 0.35);
+    backdrop-filter: blur(12px);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.modal-content {
+    background: linear-gradient(
+        145deg,
+        #ffffff,
+        #fff0f7
+    );
+    padding: 50px 40px;
+    border-radius: 35px;
+    width: 100%;
+    max-width: 950px;
+    position: relative;
+    animation: popup 0.4s ease;
+    box-shadow: 0 25px 50px rgba(255, 182, 193, 0.5);
+}
+
+@keyframes popup {
+    from {
+        transform: scale(0.75);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 32px;
+    cursor: pointer;
+    color: #ff4d88;
+    transition: 0.2s;
+}
+
+.close:hover {
+    transform: scale(1.2);
+}
+
+/* ============================= */
+/* ФОТО */
+/* ============================= */
+
+.photos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.photo {
+    max-width: 260px;
+    transition: transform 0.3s ease;
+}
+
+.photo img {
+    width: 100%;
+    border-radius: 25px;
+    box-shadow: 0 15px 30px rgba(255, 182, 193, 0.4);
+}
+
+.photo p {
+    margin-top: 12px;
+    color: #ff4d88;
+    font-size: 16px;
+}
+
+.p1 { transform: rotate(-10deg); }
+.p2 { transform: rotate(8deg); }
+.p3 { transform: rotate(-6deg); }
+
+.photo:hover {
+    transform: scale(1.05) rotate(0deg);
+}
+
+/* ============================= */
+/* СЕРДЕЧКИ */
+/* ============================= */
+
+.hearts {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.heart {
+    position: absolute;
+    bottom: -30px;
+    background: #ff99cc;
+    transform: rotate(45deg);
+    animation: floatUp linear forwards;
+}
+
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    background: #ff99cc;
+    border-radius: 50%;
+}
+
+.heart::before {
+    width: 100%;
+    height: 100%;
+    top: -50%;
+    left: 0;
+}
+
+.heart::after {
+    width: 100%;
+    height: 100%;
+    left: -50%;
+    top: 0;
+}
+
+@keyframes floatUp {
+    to {
+        transform: translateY(-110vh) rotate(45deg);
+        opacity: 0;
+    }
+}
+
+/* ============================= */
+/* АДАПТИВ */
+/* ============================= */
+
+@media (max-width: 768px) {
+
+    h1 {
+        font-size: 26px;
+    }
+
+    .cloud {
+        padding: 15px 30px;
+        font-size: 14px;
+    }
+
+    .modal-content {
+        padding: 35px 20px;
+    }
+
+    .photos {
+        gap: 25px;
+    }
+
+    .photo {
+        max-width: 80%;
+    }
+}

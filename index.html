@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Наш первый год ❤️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="hearts"></div>
+
+<header>
+    <h1>Наш первый год вместе 💕</h1>
+    <p>Нажми на облачко...</p>
+</header>
+
+<section class="clouds">
+    <div class="cloud" onclick="openModal('spring')">🌸 Весна</div>
+    <div class="cloud" onclick="openModal('summer')">☀ Лето</div>
+    <div class="cloud" onclick="openModal('autumn')">🍂 Осень</div>
+    <div class="cloud" onclick="openModal('winter2')">❄ Зима</div>
+</section>
+
+<!-- МОДАЛЬНОЕ ОКНО -->
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">×</span>
+        <div id="modal-body"></div>
+    </div>
+</div>
+
+<script>
+const content = {
+    spring: `
+        <h2>Наша весна 🌸</h2>
+        <div class="photos">
+            <div class="photo p2">
+                <img src="spring1.jpg">
+                <p>С тобой всё расцветает 🌷</p>
+            </div>
+            <div class="photo p3">
+                <img src="spring2.jpg">
+                <p>Ты — моя весна 💖</p>
+            </div>
+        </div>
+    `,
+    summer: `
+        <h2>Наше лето ☀</h2>
+        <div class="photos">
+            <div class="photo p3">
+                <img src="summer1.jpg">
+                <p>Самые яркие моменты 🔆</p>
+            </div>
+            <div class="photo p1">
+                <img src="summer2.jpg">
+                <p>Ты — моё солнце ☀</p>
+            </div>
+        </div>
+    `,
+    autumn: `
+        <h2>Наша осень 🍂</h2>
+        <div class="photos">
+            <div class="photo p2">
+                <img src="autumn1.jpg">
+                <p>Тепло даже в холод 🌰</p>
+            </div>
+            <div class="photo p1">
+                <img src="autumn2.jpg">
+                <p>Люблю каждый миг с тобой 🤎</p>
+            </div>
+        </div>
+    `,
+    winter2: `
+        <h2>И снова зима… ❤️</h2>
+        <div class="photos">
+            <div class="photo p1">
+                <img src="winter3.jpg">
+                <p>Прошёл год, а я люблю сильнее 💞</p>
+            </div>
+        </div>
+    `
+};
+
+function openModal(season) {
+    document.getElementById("modal-body").innerHTML = content[season];
+    document.getElementById("modal").style.display = "flex";
+}
+
+function closeModal() {
+    document.getElementById("modal").style.display = "none";
+}
+
+// Сердечки
+const heartsContainer = document.querySelector('.hearts');
+function createHeart() {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.width = heart.style.height = (Math.random() * 20 + 10) + "px";
+    heart.style.animationDuration = (Math.random() * 4 + 4) + "s";
+    heartsContainer.appendChild(heart);
+    setTimeout(() => heart.remove(), 8000);
+}
+setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
